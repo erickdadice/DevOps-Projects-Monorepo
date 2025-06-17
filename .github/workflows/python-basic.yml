@@ -1,0 +1,16 @@
+name: CI for python-basic
+
+on:
+  push:
+    paths:
+      - 'python-basic/**'
+  pull_request:
+    paths:
+      - 'python-basic/**'
+
+jobs:
+  dummy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Triggered
+        run: echo "Changes detected in python-basic"

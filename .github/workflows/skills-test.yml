@@ -1,0 +1,16 @@
+name: CI for skills-test-with-actions
+
+on:
+  push:
+    paths:
+      - 'skills-test-with-actions/**'
+  pull_request:
+    paths:
+      - 'skills-test-with-actions/**'
+
+jobs:
+  dummy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Triggered
+        run: echo "Changes detected in skills-test-with-actions"

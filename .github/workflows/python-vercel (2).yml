@@ -1,0 +1,16 @@
+name: CI for python-vercel-demo
+
+on:
+  push:
+    paths:
+      - 'python-vercel-demo/**'
+  pull_request:
+    paths:
+      - 'python-vercel-demo/**'
+
+jobs:
+  dummy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Triggered
+        run: echo "Changes detected in python-vercel-demo"

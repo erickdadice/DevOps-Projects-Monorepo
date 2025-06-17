@@ -1,0 +1,16 @@
+name: CI for skills-deploy-to-azure
+
+on:
+  push:
+    paths:
+      - 'skills-deploy-to-azure/**'
+  pull_request:
+    paths:
+      - 'skills-deploy-to-azure/**'
+
+jobs:
+  dummy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Triggered
+        run: echo "Changes detected in skills-deploy-to-azure"

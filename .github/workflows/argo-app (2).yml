@@ -1,0 +1,16 @@
+name: CI for argo-demo-deploy
+
+on:
+  push:
+    paths:
+      - 'argo-demo-deploy/app/**'
+  pull_request:
+    paths:
+      - 'argo-demo-deploy/app/**'
+
+jobs:
+  dummy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Triggered
+        run: echo "Changes detected in argo-demo-deploy"
