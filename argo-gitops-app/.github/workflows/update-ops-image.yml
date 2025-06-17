@@ -1,0 +1,32 @@
+name: Update ArgoCD Image in Ops Repo
+
+on:
+  push:
+    branches: [main]
+  release:
+    types: [published]
+
+jobs:
+  update-ops:
+    runs-on: ubuntu-latest
+    env:
+      OPS_REPO: erickdiaz/argo-demo-app-ops
+      FILE_PATH: overlays/dev/deployment_overlay.yml
+      IMAGE: ghcr.io/erickdiaz/argo-demo-app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get short SHA
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      - name: Push new image tag to ops repo
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git clone https://x-access-token:${{ secrets.OPS_REPO_TOKEN }}@github.com/${{ env.OPS_REPO }} ops-repo
+          cd ops-repo
+          sed -i "s|image: .*|image: ${{ env.IMAGE }}:${{ env.SHORT_SHA }}|g" ${{ env.FILE_PATH }}
+          git add ${{ env.FILE_PATH }}
+          git commit -m "update image to ${{ env.SHORT_SHA }}"
+          git push

@@ -1,0 +1,8 @@
+# Auto-generated filtered workflow for skills-azure
+# azure deploy flow placeholder
+
+on:
+  push:
+    paths:
+      - "skills-azure/**"
+    branches: [main, develop]

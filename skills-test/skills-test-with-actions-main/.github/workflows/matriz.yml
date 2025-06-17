@@ -1,0 +1,22 @@
+name: Prueba de matriz
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        color: [green, pink]
+        animal: [owl, magpie]
+        include:
+          - color: blue
+            animal: owl
+          - color: pink
+            animal: magpie
+    steps:
+      - name: Mostrar combinación
+        run: |
+          echo "Color: ${{ matrix.color }}"
+          echo "Animal: ${{ matrix.animal }}"

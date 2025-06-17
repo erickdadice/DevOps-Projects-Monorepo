@@ -1,0 +1,8 @@
+# Auto-generated filtered workflow for skills-test
+# educational flow placeholder
+
+on:
+  push:
+    paths:
+      - "skills-test/**"
+    branches: [main, develop]
