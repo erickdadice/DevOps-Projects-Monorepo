@@ -1,0 +1,4 @@
+name: GitHub Actions Skills
+on:
+  push:
+    branches: [main]

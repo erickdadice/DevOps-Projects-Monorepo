@@ -1,0 +1,4 @@
+name: Deployment Pipeline complete
+on:
+  push:
+    branches: [main, develop]
